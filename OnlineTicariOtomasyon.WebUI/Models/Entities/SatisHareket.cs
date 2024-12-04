@@ -7,7 +7,7 @@ namespace OnlineTicariOtomasyon.WebUI.Models.Entities
     public class SatisHareket
     {
         [Key]
-        public int SatişHareketID { get; set; }
+        public int SatisHareketID { get; set; }
         public DateTime Tarih { get; set; }
         public int Adet { get; set; }
         public decimal Fiyat { get; set; }
