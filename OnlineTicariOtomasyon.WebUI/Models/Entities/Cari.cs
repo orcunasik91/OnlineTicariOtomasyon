@@ -19,6 +19,7 @@ namespace OnlineTicariOtomasyon.WebUI.Models.Entities
         [Column(TypeName = "Varchar")]
         [StringLength(100)]
         public string CariEmail { get; set; }
+        public int SatisHareketID { get; set; }
         public SatisHareket SatisHareket { get; set; }
     }
 }

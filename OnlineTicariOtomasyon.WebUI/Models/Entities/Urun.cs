@@ -20,7 +20,9 @@ namespace OnlineTicariOtomasyon.WebUI.Models.Entities
         [StringLength(250)]
         public string UrunGorsel { get; set; }
         public bool Durum { get; set; }
+        public int KategoriID { get; set; }
         public Kategori Kategori { get; set; }
+        public int SatisHareketID { get; set; }
         public SatisHareket SatisHareket { get; set; }
     }
 }

@@ -13,6 +13,7 @@ namespace OnlineTicariOtomasyon.WebUI.Models.Entities
         public int Miktar { get; set; }
         public decimal BirimFiyat { get; set; }
         public decimal Tutar { get; set; }
+        public int FaturaID { get; set; }
         public Fatura Fatura { get; set; }
     }
 }

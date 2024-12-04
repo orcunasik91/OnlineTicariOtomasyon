@@ -16,7 +16,9 @@ namespace OnlineTicariOtomasyon.WebUI.Models.Entities
         [Column(TypeName = "Varchar")]
         [StringLength(250)]
         public string PersonelResim { get; set; }
-        public Departman Departman { get; set; }
+        public int DepartmanID { get; set; }
+        public Departmanlar Departmanlars { get; set; }
+        public int SatisHareketID { get; set; }
         public SatisHareket SatisHareket { get; set; }
     }
 }
