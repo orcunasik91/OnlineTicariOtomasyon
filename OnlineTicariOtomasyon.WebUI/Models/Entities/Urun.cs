@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OnlineTicariOtomasyon.WebUI.Models.Entities
@@ -22,7 +23,6 @@ namespace OnlineTicariOtomasyon.WebUI.Models.Entities
         public bool Durum { get; set; }
         public int KategoriID { get; set; }
         public Kategori Kategori { get; set; }
-        public int SatisHareketID { get; set; }
-        public SatisHareket SatisHareket { get; set; }
+        public ICollection<SatisHareket> SatisHarekets { get; set; }
     }
 }

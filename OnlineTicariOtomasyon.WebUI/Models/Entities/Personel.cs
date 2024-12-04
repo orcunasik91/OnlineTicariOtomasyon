@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OnlineTicariOtomasyon.WebUI.Models.Entities
@@ -18,7 +19,6 @@ namespace OnlineTicariOtomasyon.WebUI.Models.Entities
         public string PersonelResim { get; set; }
         public int DepartmanID { get; set; }
         public Departmanlar Departmanlars { get; set; }
-        public int SatisHareketID { get; set; }
-        public SatisHareket SatisHareket { get; set; }
+        public ICollection<SatisHareket> SatisHarekets { get; set; }
     }
 }

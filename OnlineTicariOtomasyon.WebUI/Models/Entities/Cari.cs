@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OnlineTicariOtomasyon.WebUI.Models.Entities
@@ -19,7 +20,6 @@ namespace OnlineTicariOtomasyon.WebUI.Models.Entities
         [Column(TypeName = "Varchar")]
         [StringLength(100)]
         public string CariEmail { get; set; }
-        public int SatisHareketID { get; set; }
-        public SatisHareket SatisHareket { get; set; }
+        public ICollection<SatisHareket> SatisHarekets { get; set; }
     }
 }

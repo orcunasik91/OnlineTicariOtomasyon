@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace OnlineTicariOtomasyon.WebUI.Models.Entities
@@ -12,8 +11,11 @@ namespace OnlineTicariOtomasyon.WebUI.Models.Entities
         public int Adet { get; set; }
         public decimal Fiyat { get; set; }
         public decimal ToplamTutar { get; set; }
-        public ICollection<Urun> Uruns { get; set; }
-        public ICollection<Cari> Caris { get; set; }
-        public ICollection<Personel> Personels { get; set; }
+        public int UrunID { get; set; }
+        public Urun Urun { get; set; }
+        public int CariID { get; set; }
+        public Cari Cari { get; set; }
+        public int PersonelID { get; set; }
+        public Personel Personel { get; set; }
     }
 }
