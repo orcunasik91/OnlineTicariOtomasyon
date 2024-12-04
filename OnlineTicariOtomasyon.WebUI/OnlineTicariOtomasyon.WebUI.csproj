@@ -124,6 +124,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\Admin.cs" />
+    <Compile Include="Models\Entities\Cari.cs" />
+    <Compile Include="Models\Entities\Departman.cs" />
+    <Compile Include="Models\Entities\Fatura.cs" />
+    <Compile Include="Models\Entities\FaturaKalem.cs" />
+    <Compile Include="Models\Entities\Gider.cs" />
+    <Compile Include="Models\Entities\Kategori.cs" />
+    <Compile Include="Models\Entities\Personel.cs" />
+    <Compile Include="Models\Entities\SatisHareket.cs" />
+    <Compile Include="Models\Entities\Urun.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -180,7 +190,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
