@@ -22,7 +22,7 @@ namespace OnlineTicariOtomasyon.WebUI.Models.Entities
         public string UrunGorsel { get; set; }
         public bool Durum { get; set; }
         public int KategoriID { get; set; }
-        public Kategori Kategori { get; set; }
+        public virtual Kategori Kategori { get; set; }
         public ICollection<SatisHareket> SatisHarekets { get; set; }
     }
 }

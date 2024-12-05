@@ -1,0 +1,12 @@
+﻿@model Departmanlar
+@{
+    ViewBag.Title = "Departman Düzenle";
+}
+<h2>Departman Düzenle</h2>
+<form class="form-group" action="/Departmanlar/DepartmanDuzenle/" method="post">
+    <input type="hidden" name="DepartmanID" value="@Model.DepartmanID" />
+    <input type="hidden" name="Durum" value="@Model.Durum" />
+    <label for="DepartmanAd" class="mb-1 font-weight-bold">Kategori:</label>
+    <input type="text" id="DepartmanAd" name="DepartmanAd" autofocus value="@Model.DepartmanAd" class="form-control mb-2" />
+    <button class="btn btn-outline-success">Güncelle</button>
+</form>

@@ -1,0 +1,24 @@
+﻿@model List<Personel>
+@{
+    ViewBag.Title = "Departman Detay";
+}
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active"><h5>Departman: @ViewBag.Departman</h5></li>
+</ol>
+<table class="table table-hover">
+    <tr>
+        <th>ID</th>
+        <th>Profil</th>
+        <th>Personel</th>
+        <th>Satışlar</th>
+    </tr>
+    @foreach (Personel personel in Model)
+    {
+        <tr>
+            <td>@personel.PersonelID</td>
+            <td>@personel.PersonelResim</td>
+            <td>@personel.PersonelAd @personel.PersonelSoyad</td>
+            <td><a href="/Departmanlar/DepartmanPersonelSatis/@personel.PersonelID" class="btn btn-outline-success">Satışlar</a></td>
+        </tr>
+    }
+</table>

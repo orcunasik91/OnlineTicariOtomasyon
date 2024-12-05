@@ -11,7 +11,7 @@ namespace OnlineTicariOtomasyon.WebUI.Controllers
         Context context = new Context();
         public ActionResult Index()
         {
-            List<Urun> uruns = context.Uruns.Include(u => u.Kategori).Where(u => u.Durum == true).ToList();
+            List<Urun> uruns = context.Uruns.Where(u => u.Durum == true).ToList();
             return View(uruns);
         }
         [HttpGet]
