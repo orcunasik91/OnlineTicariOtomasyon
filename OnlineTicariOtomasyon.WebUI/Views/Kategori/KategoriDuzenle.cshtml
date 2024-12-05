@@ -1,0 +1,12 @@
+﻿@model Kategori
+@{
+    ViewBag.Title = "Kategori Düzenle";
+}
+
+<h2>Kategori Düzenle</h2>
+<form method="post" class="form-group">
+    <input type="hidden" name="KategoriID" value="@Model.KategoriID"/>
+    <label for="KategoriAd" class="mb-1 font-weight-bold">Kategori:</label>
+    <input type="text" id="KategoriAd" name="KategoriAd" autofocus value="@Model.KategoriAd" class="form-control mb-2" />
+    <button class="btn btn-outline-success">Güncelle</button>
+</form>

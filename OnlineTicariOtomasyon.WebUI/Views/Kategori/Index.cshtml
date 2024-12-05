@@ -1,0 +1,25 @@
+﻿@model List<Kategori>
+@{
+    ViewBag.Title = "Kategoriler";
+}
+<a href="/Kategori/KategoriEkle/" class="btn btn-primary">Yeni Kategori</a>
+<table class="table table-bordered mt-1">
+    <tr>
+        <th>ID</th>
+        <th>Kategori</th>
+        <th colspan="2">İşlemler</th>
+    </tr>
+    @{
+        int i = 1;
+        foreach (Kategori kategori in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@kategori.KategoriAd</td>
+                <td><a href="/Kategori/KategoriSil/@kategori.KategoriID" class="btn btn-danger mt-2">Sil</a></td>
+                <td><a href="/Kategori/KategoriDuzenle/@kategori.KategoriID" class="btn btn-warning mt-2">Düzenle</a></td>
+            </tr>
+            i++;
+        }
+    }
+</table>
