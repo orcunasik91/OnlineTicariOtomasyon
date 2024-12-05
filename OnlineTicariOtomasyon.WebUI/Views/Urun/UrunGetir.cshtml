@@ -1,0 +1,24 @@
+﻿@model Urun
+@{
+    ViewBag.Title = "Ürün Düzenle";
+}
+<h2>Ürün Düzenle</h2>
+<form method="post" class="form-group" action="/Urun/UrunDuzenle/">
+    <input type="hidden" name="UrunID" value="@Model.UrunID" />
+    <input type="hidden" name="Durum" value="@Model.Durum" />
+    <label for="UrunAd" class="mb-1 font-weight-bold">Ürün:</label>
+    <input type="text" autofocus id="UrunAd" name="UrunAd" value="@Model.UrunAd" class="form-control mb-2" />
+    <label for="Kategori" class="font-weight-bold">Kategori: </label>
+    @Html.DropDownListFor(u => u.KategoriID, (List<SelectListItem>)ViewBag.UrunKategori, new { @class = "form-control" })
+    <label for="Marka" class="font-weight-bold">Marka:</label>
+    <input type="text" id="Marka" name="Marka" value="@Model.Marka" class="form-control mb-2" />
+    <label for="Stok" class="font-weight-bold">Stok:</label>
+    <input type="number" id="Stok" name="Stok" value="@Model.Stok" class="form-control mb-2" />
+    <label for="AlisFiyati" class="font-weight-bold">Alış Fiyatı:</label>
+    <input type="text" id="AlisFiyati" name="AlisFiyati" value="@Model.AlisFiyati" class="form-control mb-2" />
+    <label for="SatisFiyati" class="font-weight-bold">Satış Fiyatı:</label>
+    <input type="text" id="SatisFiyati" name="SatisFiyati" value="@Model.SatisFiyati" class="form-control mb-2" />
+    <label for="UrunGorsel" class="font-weight-bold">Ürün Görsel:</label>
+    <input type="text" id="UrunGorsel" name="UrunGorsel" value="@Model.UrunGorsel" class="form-control mb-2" />
+    <button class="btn btn-outline-success">Güncelle</button>
+</form>

@@ -1,0 +1,36 @@
+﻿@model List<Urun>
+@{
+    ViewBag.Title = "Ürünler";
+}
+<a href="/Urun/UrunEkle/" class="btn btn-primary">Yeni Ürün</a>
+<table class="table table-bordered mt-1">
+    <tr>
+        <th>ID</th>
+        <th>Ürün</th>
+        <th>Kategori</th>
+        <th>Marka</th>
+        <th>Stok</th>
+        <th>Alış Fiyatı</th>
+        <th>Satış Fiyatı</th>
+        <th colspan="2">İşlemler</th>
+    </tr>
+    @{
+        int i = 1;
+        foreach (Urun urun in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@urun.UrunAd</td>
+                <td>@urun.Kategori.KategoriAd</td>
+                <td>@urun.Marka</td>
+                <td>@urun.Stok</td>
+                <td>@urun.AlisFiyati</td>
+                <td>@urun.SatisFiyati</td>
+                <td><a href="/Urun/UrunSil/@urun.UrunID" class="btn btn-danger mt-2">Sil</a></td>
+                <td><a href="/Urun/UrunGetir/@urun.UrunID" class="btn btn-warning mt-2">Düzenle</a></td>
+            </tr>
+            i++;
+        }
+    }
+</table>
+
