@@ -1,0 +1,18 @@
+﻿@model Cari
+@{
+    ViewBag.Title = "Yeni Cari";
+}
+<h4>CariEkle</h4>
+<div class="form-group">
+    <form method="post">
+        <label for="CariAd" class="mb-1 font-weight-bold">Adı:</label>
+        <input type="text" autofocus id="CariAd" name="CariAd" class="form-control mb-2" />
+        <label for="CariSoyad" class="mb-1 font-weight-bold">Soyadı:</label>
+        <input type="text" id="CariSoyad" name="CariSoyad" class="form-control mb-2" />
+        <label for="CariSehir" class="mb-1 font-weight-bold">Şehir:</label>
+        <input type="text" id="CariSehir" name="CariSehir" class="form-control mb-2" />
+        <label for="CariEmail" class="mb-1 font-weight-bold">Eposta:</label>
+        <input type="email" id="CariEmail" name="CariEmail" class="form-control mb-2" />
+        <button class="btn btn-outline-success">Kaydet</button>
+    </form>
+</div>

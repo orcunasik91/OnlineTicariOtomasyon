@@ -1,0 +1,28 @@
+﻿@model Cari
+@{
+    ViewBag.Title = "Cari Düzenle";
+}
+<h4>Cari Düzenle</h4>
+@using (Html.BeginForm("CariDuzenle", "Cari", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.CariID)
+    <div>
+        <label for="CariAd" class="font-weight-bolder">Adı:</label>
+        @Html.TextBoxFor(model => model.CariAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.CariAd, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <label for="CariSoyad" class="font-weight-bolder mt-2">Soyadı:</label>
+        @Html.TextBoxFor(model => model.CariSoyad, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.CariSoyad, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <label for="CariSehir" class="font-weight-bolder mt-2">Şehir:</label>
+        @Html.TextBoxFor(model => model.CariSehir, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="CariEmail" class="font-weight-bolder mt-2">Email:</label>
+        @Html.TextBoxFor(model => model.CariEmail, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-outline-success mt-2">Güncelle</button>
+}

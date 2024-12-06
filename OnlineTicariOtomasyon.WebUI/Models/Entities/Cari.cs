@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,10 +10,11 @@ namespace OnlineTicariOtomasyon.WebUI.Models.Entities
         [Key]
         public int CariID { get; set; }
         [Column(TypeName = "Varchar")]
-        [StringLength(30)]
+        [StringLength(30,ErrorMessage = "En Fazla 30 Karakter Yazabilirsiniz")]
         public string CariAd { get; set; }
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
+        [Required(ErrorMessage = "Bu Alan Boş Geçilmemelidir")]
         public string CariSoyad { get; set; }
         [Column(TypeName = "Varchar")]
         [StringLength(14)]
@@ -20,6 +22,7 @@ namespace OnlineTicariOtomasyon.WebUI.Models.Entities
         [Column(TypeName = "Varchar")]
         [StringLength(100)]
         public string CariEmail { get; set; }
+        public bool Durum { get; set; }
         public ICollection<SatisHareket> SatisHarekets { get; set; }
     }
 }

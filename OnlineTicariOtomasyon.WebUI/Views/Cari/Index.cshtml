@@ -1,0 +1,30 @@
+﻿@model List<Cari>
+@{
+    ViewBag.Title = "Cariler";
+}
+<a href="/Cari/CariEkle/" class="btn btn-primary">Yeni Cari</a>
+<table class="table table-bordered mt-1">
+    <tr>
+        <th>ID</th>
+        <th>Cari</th>
+        <th>Şehir</th>
+        <th>Eposta</th>
+        <th colspan="3" class="text-center">İşlemler</th>
+    </tr>
+    @{
+        int i = 1;
+        foreach (Cari cari in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@cari.CariAd @cari.CariSoyad</td>
+                <td>@cari.CariSehir</td>
+                <td>@cari.CariEmail</td>
+                <td><a href="/Cari/CariSil/@cari.CariID" class="btn btn-danger mt-2">Sil</a></td>
+                <td><a href="/Cari/CariGetir/@cari.CariID" class="btn btn-warning mt-2">Düzenle</a></td>
+                <td><a href="/Cari/CariDetay/@cari.CariID" class="btn btn-info mt-2">Satış Geçmişi</a></td>
+            </tr>
+            i++;
+        }
+    }
+</table>

@@ -1,0 +1,30 @@
+﻿@model List<SatisHareket>
+@{
+    ViewBag.Title = "Cari Detay";
+}
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active"><h5>Cari: @ViewBag.Cari</h5></li>
+</ol>
+<table class="table table-hover">
+    <tr>
+        <th>Satış ID</th>
+        <th>Alınan Ürün</th>
+        <th>Adet</th>
+        <th>Fiyat</th>
+        <th>Ödenen Tutar</th>
+        <th>İşlem Tarihi</th>
+        <th>Yazdır</th>
+    </tr>
+    @foreach (SatisHareket satis in Model)
+    {
+        <tr>
+            <td>@satis.SatisHareketID</td>
+            <td>@satis.Urun.UrunAd</td>
+            <td>@satis.Adet</td>
+            <td>@satis.Fiyat₺</td>
+            <td>@satis.ToplamTutar₺</td>
+            <td>@satis.Tarih.ToString("dd/MMMM/yyyy")</td>
+            <td><a href="#" class="btn btn-dark">Yazdır</a></td>
+        </tr>
+    }
+</table>
