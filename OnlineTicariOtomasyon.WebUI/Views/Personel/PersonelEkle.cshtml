@@ -1,0 +1,25 @@
+﻿@model Personel
+@{
+    ViewBag.Title = "Yeni Personel";
+}
+<h4>Yeni Personel</h4>
+@using (Html.BeginForm("PersonelEkle", "Personel", FormMethod.Post))
+{
+    <div>
+        <label for="PersonelAd" class="font-weight-bolder">Adı:</label>
+        @Html.TextBoxFor(model => model.PersonelAd, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="PersonelSoyad" class="font-weight-bolder mt-2">Soyadı:</label>
+        @Html.TextBoxFor(model => model.PersonelSoyad, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="PersonelResim" class="font-weight-bolder mt-2">Resim:</label>
+        @Html.TextBoxFor(model => model.PersonelResim, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="Departman" class="font-weight-bolder mt-2">Departman:</label>
+        @Html.DropDownListFor(model => model.DepartmanID, (List<SelectListItem>)ViewBag.PersonelDepartman, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-outline-success mt-2">Kaydet</button>
+}

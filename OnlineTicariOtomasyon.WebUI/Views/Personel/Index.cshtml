@@ -1,0 +1,27 @@
+﻿@model List<Personel>
+@{
+    ViewBag.Title = "Personeller";
+}
+<a href="/Personel/PersonelEkle/" class="btn btn-primary">Yeni Personel</a>
+<table class="table table-bordered mt-1">
+    <tr>
+        <th>ID</th>
+        <th>Personel</th>
+        <th>Departman</th>
+        <th colspan="2" class="text-md-center">İşlemler</th>
+    </tr>
+    @{
+        int i = 1;
+        foreach (Personel personel in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@personel.PersonelAd @personel.PersonelSoyad</td>
+                <td>@personel.Departmanlars.DepartmanAd</td>
+                <td><a href="/Personel/PersonelGetir/@personel.PersonelID" class="btn btn-warning mt-2">Düzenle</a></td>
+                <td><a href="/Departmanlar/DepartmanPersonelSatis/@personel.PersonelID" class="btn btn-outline-primary mt-2">Detaylar</a></td>
+            </tr>
+            i++;
+        }
+    }
+</table>

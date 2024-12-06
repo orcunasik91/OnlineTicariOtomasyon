@@ -18,7 +18,7 @@ namespace OnlineTicariOtomasyon.WebUI.Models.Entities
         [StringLength(250)]
         public string PersonelResim { get; set; }
         public int DepartmanID { get; set; }
-        public Departmanlar Departmanlars { get; set; }
+        public virtual Departmanlar Departmanlars { get; set; }
         public ICollection<SatisHareket> SatisHarekets { get; set; }
     }
 }
