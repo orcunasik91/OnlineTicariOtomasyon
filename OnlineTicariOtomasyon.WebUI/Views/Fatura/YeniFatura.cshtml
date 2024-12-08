@@ -1,0 +1,29 @@
+﻿@model Fatura
+@{
+    ViewBag.Title = "Yeni Fatura";
+}
+<h4>Yeni Fatura</h4>
+@using (Html.BeginForm("YeniFatura", "Fatura", FormMethod.Post))
+{
+    <div>
+        <label for="FaturaSeriNo" class="font-weight-bolder">Seri Nu:</label>
+        @Html.TextBoxFor(model => model.FaturaSeriNo, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="FaturaSıraNo" class="font-weight-bolder mt-2">Sıra Nu:</label>
+        @Html.TextBoxFor(model => model.FaturaSiraNo, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="VergiDairesi" class="font-weight-bolder mt-2">Vergi Dairesi:</label>
+        @Html.TextBoxFor(model => model.VergiDairesi, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="TeslimEden" class="font-weight-bolder mt-2">Teslim Eden:</label>
+        @Html.TextBoxFor(model => model.TeslimEden, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="TeslimAlan" class="font-weight-bolder mt-2">Teslim Alan:</label>
+        @Html.TextBoxFor(model => model.TeslimAlan, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-outline-success mt-2">Kaydet</button>
+}

@@ -1,0 +1,25 @@
+﻿@model FaturaKalem
+@{
+    ViewBag.Title = "Yeni Fatura Kalem";
+}
+<h4>Yeni Fatura Kalem</h4>
+@using (Html.BeginForm("YeniKalem", "Fatura", FormMethod.Post))
+{
+    <div>
+        <label for="FaturaID" class="font-weight-bolder">FaturaID:</label>
+        @Html.TextBoxFor(model => model.FaturaID, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="Aciklama" class="font-weight-bolder">Açıklama:</label>
+        @Html.TextBoxFor(model => model.Aciklama, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="Miktar" class="font-weight-bolder mt-2">Miktar:</label>
+        @Html.TextBoxFor(model => model.Miktar, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="BirimFiyat" class="font-weight-bolder mt-2">Birim Fiyat:</label>
+        @Html.TextBoxFor(model => model.BirimFiyat, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-outline-success mt-2">Oluştur</button>
+}

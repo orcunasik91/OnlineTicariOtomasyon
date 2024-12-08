@@ -1,0 +1,31 @@
+﻿@model List<FaturaKalem>
+@{
+    ViewBag.Title = "Fatura Detay";
+}
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active"><h5>Fatura Nu: @ViewBag.FaturaKalem</h5></li>
+</ol>
+<a href="/Fatura/YeniKalem/" class="btn btn-primary">Yeni Kalem</a>
+<table class="table table-hover table-bordered mt-2">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Açıklama</th>
+            <th>Miktar</th>
+            <th>Birim Fiyat</th>
+            <th>Tutar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (FaturaKalem faturaKalem in Model)
+        {
+            <tr>
+                <td>@faturaKalem.FaturaKalemID</td>
+                <td>@faturaKalem.Aciklama</td>
+                <td>@faturaKalem.Miktar</td>
+                <td>@faturaKalem.BirimFiyat</td>
+                <td>@faturaKalem.Tutar</td>
+            </tr>
+        }
+    </tbody>
+</table>

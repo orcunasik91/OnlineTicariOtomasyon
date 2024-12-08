@@ -1,0 +1,43 @@
+﻿@model List<Fatura>
+@{
+    ViewBag.Title = "Faturalar";
+}
+<h4>Faturalar</h4>
+<a href="/Fatura/YeniFatura/" class="btn btn-primary">Yeni Fatura</a>
+<table class="table table-hover table-bordered mt-1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fatura Nu</th>
+            <th>Fatura Tarih</th>
+            <th>Fatura Saat</th>
+            <th>Vergi Dairesi</th>
+            <th>Teslim Eden</th>
+            <th>Teslim Alan</th>
+            <th>Toplam Tutar</th>
+            <th>Düzenle</th>
+            <th>Detay</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 1;
+            foreach (Fatura fatura in Model)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@fatura.FaturaSeriNo-@fatura.FaturaSiraNo</td>
+                    <td>@fatura.FaturaTarih.ToString("dd-MMMM-yyyy")</td>
+                    <td>@fatura.FaturaSaat.ToString("t")</td>
+                    <td>@fatura.VergiDairesi</td>
+                    <td>@fatura.TeslimEden</td>
+                    <td>@fatura.TeslimAlan</td>
+                    <td>@fatura.ToplamTutar₺</td>
+                    <td><a href="/Fatura/FaturaGetir/@fatura.FaturaID" class="btn btn-warning mt-2">Düzenle</a></td>
+                    <td><a href="/Fatura/FaturaDetay/@fatura.FaturaID" class="btn btn-outline-secondary mt-2">Detay</a></td>
+                </tr>
+                i++;
+            }
+        }
+    </tbody>
+</table>

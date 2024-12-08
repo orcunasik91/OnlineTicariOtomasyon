@@ -1,0 +1,30 @@
+﻿@model Fatura
+@{
+    ViewBag.Title = "Fatura Düzenle";
+}
+<h4>Fatura Düzenle</h4>
+@using (Html.BeginForm("FaturaDuzenle", "Fatura", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.FaturaID)
+    <div>
+        <label for="FaturaSeriNo" class="font-weight-bolder">Seri Nu:</label>
+        @Html.TextBoxFor(model => model.FaturaSeriNo, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="FaturaSıraNo" class="font-weight-bolder mt-2">Sıra Nu:</label>
+        @Html.TextBoxFor(model => model.FaturaSiraNo, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="VergiDairesi" class="font-weight-bolder mt-2">Vergi Dairesi:</label>
+        @Html.TextBoxFor(model => model.VergiDairesi, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="TeslimEden" class="font-weight-bolder mt-2">Teslim Eden:</label>
+        @Html.TextBoxFor(model => model.TeslimEden, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="TeslimAlan" class="font-weight-bolder mt-2">Teslim Alan:</label>
+        @Html.TextBoxFor(model => model.TeslimAlan, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-outline-success mt-2">Güncelle</button>
+}
