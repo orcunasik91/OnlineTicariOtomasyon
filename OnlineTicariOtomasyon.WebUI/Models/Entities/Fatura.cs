@@ -26,6 +26,7 @@ namespace OnlineTicariOtomasyon.WebUI.Models.Entities
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
         public string TeslimAlan { get; set; }
+        public decimal ToplamTutar { get; set; }
         public ICollection<FaturaKalem> FaturaKalems { get; set; }
     }
 }
