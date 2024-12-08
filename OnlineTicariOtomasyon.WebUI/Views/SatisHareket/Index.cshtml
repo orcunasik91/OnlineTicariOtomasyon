@@ -1,0 +1,68 @@
+﻿@model List<SatisHareket>
+@{
+    ViewBag.Title = "Satış Hareketleri";
+}
+<h4>Satış Hareketleri</h4>
+<a href="/SatisHareket/YeniSatis/" class="btn btn-primary">Yeni Satış Yap</a>
+<table id="satisTable" class="table table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ürün</th>
+            <th>Müşteri</th>
+            <th>Satış Personeli</th>
+            <th>Adet</th>
+            <th>Fiyat</th>
+            <th>Toplam Tutar</th>
+            <th>Satış Tarihi</th>
+            <th>Düzenle</th>
+            <th>Detaylar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 1;
+            foreach (SatisHareket satis in Model)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@satis.Urun.UrunAd</td>
+                    <td>@satis.Cari.CariAd @satis.Cari.CariSoyad</td>
+                    <td>@satis.Personel.PersonelAd @satis.Personel.PersonelSoyad</td>
+                    <td>@satis.Adet</td>
+                    <td>@satis.Fiyat₺</td>
+                    <td>@satis.ToplamTutar₺</td>
+                    <td>@satis.Tarih.ToString("dd-MMMM-yyyy")</td>
+                    <td><a href="/SatisHareket/SatisGetir/@satis.SatisHareketID" class="btn btn-warning mt-2">Düzenle</a></td>
+                    <td><a href="/SatisHareket/SatisDetay/@satis.CariID" class="btn btn-outline-primary mt-2">Detaylar</a></td>
+                </tr>
+                i++;
+            }
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>ID</th>
+            <th>Ürün</th>
+            <th>Müşteri</th>
+            <th>Satış Personeli</th>
+            <th>Adet</th>
+            <th>Fiyat</th>
+            <th>Toplam Tutar</th>
+            <th>Satış Tarihi</th>
+            <th>Düzenle</th>
+            <th>Detaylar</th>
+        </tr>
+    </tfoot>
+</table>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css" rel="stylesheet" />
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+<script>
+    new DataTable('#satisTable');
+</script>

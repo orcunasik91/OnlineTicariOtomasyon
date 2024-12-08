@@ -1,0 +1,30 @@
+﻿@model SatisHareket
+@{
+    ViewBag.Title = "Satış Düzenle";
+}
+<h4>Satış Düzenle</h4>
+@using (Html.BeginForm("SatisDuzenle", "SatisHareket", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.SatisHareketID)
+    <div>
+        <label for="UrunAd" class="font-weight-bolder">Ürün:</label>
+        @Html.DropDownListFor(model => model.UrunID, (List<SelectListItem>)ViewBag.Urun, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="CariAd" class="font-weight-bolder mt-2">Müşteri:</label>
+        @Html.DropDownListFor(model => model.CariID, (List<SelectListItem>)ViewBag.Cari, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="PersonelAd" class="font-weight-bolder mt-2">Satış Personeli:</label>
+        @Html.DropDownListFor(model => model.PersonelID, (List<SelectListItem>)ViewBag.Personel, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="Adet" class="font-weight-bolder mt-2">Adet:</label>
+        @Html.TextBoxFor(model => model.Adet, new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="Fiyat" class="font-weight-bolder mt-2">Fiyat:</label>
+        @Html.TextBoxFor(model => model.Fiyat, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-outline-success mt-2">Güncelle</button>
+}
