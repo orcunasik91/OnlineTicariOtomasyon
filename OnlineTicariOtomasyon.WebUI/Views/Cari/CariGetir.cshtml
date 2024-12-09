@@ -3,26 +3,39 @@
     ViewBag.Title = "Cari Düzenle";
 }
 <h4>Cari Düzenle</h4>
-@using (Html.BeginForm("CariDuzenle", "Cari", FormMethod.Post))
-{
-    @Html.HiddenFor(model => model.CariID)
+<form action="@Url.Action("CariDuzenle", "Cari")" method="post">
+    <input type="hidden" name="CariID" value="@Model.CariID" />
     <div>
         <label for="CariAd" class="font-weight-bolder">Adı:</label>
-        @Html.TextBoxFor(model => model.CariAd, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.CariAd, "", new { @class = "text-danger" })
+        <input type="text" id="CariAd" name="CariAd" class="form-control" value="@Model.CariAd" />
+        @if (ViewData.ModelState["CariAd"]?.Errors.Any() == true)
+        {
+            <span class="text-danger">@ViewData.ModelState["CariAd"].Errors.First().ErrorMessage</span>
+        }
     </div>
     <div>
         <label for="CariSoyad" class="font-weight-bolder mt-2">Soyadı:</label>
-        @Html.TextBoxFor(model => model.CariSoyad, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.CariSoyad, "", new { @class = "text-danger" })
+        <input type="text" id="CariSoyad" name="CariSoyad" class="form-control" value="@Model.CariSoyad" />
+        @if (ViewData.ModelState["CariSoyad"]?.Errors.Any() == true)
+        {
+            <span class="text-danger">@ViewData.ModelState["CariSoyad"].Errors.First().ErrorMessage</span>
+        }
     </div>
     <div>
         <label for="CariSehir" class="font-weight-bolder mt-2">Şehir:</label>
-        @Html.TextBoxFor(model => model.CariSehir, new { @class = "form-control" })
+        <input type="text" id="CariSehir" name="CariSehir" class="form-control" value="@Model.CariSehir" />
+        @if (ViewData.ModelState["CariSehir"]?.Errors.Any() == true)
+        {
+            <span class="text-danger">@ViewData.ModelState["CariSehir"].Errors.First().ErrorMessage</span>
+        }
     </div>
     <div>
         <label for="CariEmail" class="font-weight-bolder mt-2">Email:</label>
-        @Html.TextBoxFor(model => model.CariEmail, new { @class = "form-control" })
+        <input type="text" id="CariEmail" name="CariEmail" class="form-control" value="@Model.CariEmail" />
+        @if (ViewData.ModelState["CariEmail"]?.Errors.Any() == true)
+        {
+            <span class="text-danger">@ViewData.ModelState["CariEmail"].Errors.First().ErrorMessage</span>
+        }
     </div>
     <button type="submit" class="btn btn-outline-success mt-2">Güncelle</button>
-}
+</form>
