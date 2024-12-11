@@ -152,6 +152,8 @@
     <Compile Include="Models\Entities\Personel.cs" />
     <Compile Include="Models\Entities\SatisHareket.cs" />
     <Compile Include="Models\Entities\Urun.cs" />
+    <Compile Include="Models\Entities\UrunDetay.cs" />
+    <Compile Include="Models\Entities\UrunWithUrunDetay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

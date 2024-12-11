@@ -7,6 +7,7 @@ namespace OnlineTicariOtomasyon.WebUI.Models.Entities
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Kategori> Kategoris { get; set; }
         public DbSet<Urun> Uruns { get; set; }
+        public DbSet<UrunDetay> UrunDetays { get; set; }
         public DbSet<Departmanlar> Departmanlars { get; set; }
         public DbSet<Personel> Personels { get; set; }
         public DbSet<Fatura> Faturas { get; set; }
