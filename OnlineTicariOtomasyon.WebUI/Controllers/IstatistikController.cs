@@ -9,6 +9,7 @@ namespace OnlineTicariOtomasyon.WebUI.Controllers
     public class IstatistikController : Controller
     {
         Context context = new Context();
+        [HttpGet]
         public ActionResult Index()
         {
             #region ToplamCari
@@ -71,14 +72,69 @@ namespace OnlineTicariOtomasyon.WebUI.Controllers
             ViewBag.KasaToplam = kasaToplam;
             #endregion
             #region GunlukSatis
-            int gunlukSatis = context.SatisHarekets.Count(sh => sh.Tarih == DateTime.Today);
+            DateTime tarih = DateTime.Parse("2024-12-09");
+            int gunlukSatis = context.SatisHarekets.Count(sh => sh.Tarih == tarih);
             ViewBag.GunlukSatis = gunlukSatis;
             #endregion
             #region GunlukKasa
-            decimal gunlukKasa = context.SatisHarekets.Where(sh => sh.Tarih == DateTime.Today).Sum(sh => sh.ToplamTutar);
+            decimal gunlukKasa = context.SatisHarekets.Where(sh => sh.Tarih == tarih).Sum(sh => sh.ToplamTutar);
             ViewBag.GunlukKasa = gunlukKasa;
             #endregion
             return View();
+        }
+        [HttpGet]
+        public ActionResult OzetTablolar()
+        {
+            return View();
+        }
+        public PartialViewResult KategoriUrun()
+        {
+            var urunAdet = from u in context.Uruns
+                           group u by u.Kategori.KategoriAd into g
+                           select new KategoriUrun
+                           {
+                               Kategori = g.Key,
+                               Adet = g.Count()
+                           };
+            return PartialView(urunAdet.ToList());
+        }
+        public PartialViewResult SehirCari()
+        {
+            var cariAdet = from c in context.Caris
+                            group c by c.CariSehir into g
+                            select new MusteriWithSehir
+                            {
+                                Sehir = g.Key,
+                                Adet = g.Count()
+                            };
+            return PartialView(cariAdet.ToList());
+        }
+        public PartialViewResult DepartmanPersonel()
+        {
+            var personelAdet = from p in context.Personels
+                                    group p by p.Departmanlars.DepartmanAd into g
+                                    select new DepartmanPersonel
+                                    {
+                                        Departman = g.Key,
+                                        Adet = g.Count()
+                                    };
+            return PartialView(personelAdet.ToList());
+        }
+        public PartialViewResult MarkaUrunSatis()
+        {
+            var markaAdet = from sh in context.SatisHarekets
+                               group sh by sh.Urun.Marka into g
+                               select new MarkaUrunSatis
+                               {
+                                   Marka = g.Key,
+                                   Adet = g.Count()
+                               };
+            return PartialView(markaAdet.ToList());
+        }
+        public PartialViewResult SatisHareketleri()
+        {
+            var satisHareketleri = context.SatisHarekets.ToList();
+            return PartialView(satisHareketleri);
         }
     }
 }
