@@ -2655,6 +2655,7 @@
     <Content Include="Views\Istatistik\KategoriUrun.cshtml" />
     <Content Include="Views\Istatistik\MarkaUrunSatis.cshtml" />
     <Content Include="Views\Istatistik\SatisHareketleri.cshtml" />
+    <Content Include="Views\Personel\PersonelListe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

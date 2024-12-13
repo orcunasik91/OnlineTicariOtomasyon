@@ -56,5 +56,11 @@ namespace OnlineTicariOtomasyon.WebUI.Controllers
             context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+        [HttpGet]
+        public ActionResult PersonelListe()
+        {
+            List<Personel> personelListesi = context.Personels.ToList();
+            return View(personelListesi);
+        }
     }
 }

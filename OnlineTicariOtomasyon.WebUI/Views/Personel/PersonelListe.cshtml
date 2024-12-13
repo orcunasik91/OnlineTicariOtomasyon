@@ -1,0 +1,79 @@
+﻿@model List<Personel>
+@{
+    ViewBag.Title = "Personel Listesi";
+}
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h4>Personel Listesi</h4>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Personel/Index/">Personel</a></li>
+                    <li class="breadcrumb-item active">Personel Listesi</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="card card-solid">
+        <div class="card-body pb-0">
+            <div class="row d-flex align-items-stretch">
+                @foreach (Personel personel in Model)
+                {
+                    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+                        <div class="card bg-light">
+                            <div class="card-header text-muted border-bottom-0">
+                                @personel.Departmanlars.DepartmanAd
+                            </div>
+                            <div class="card-body pt-0">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="lead"><b>@personel.PersonelAd @personel.PersonelSoyad</b></h2>
+                                        <p class="text-muted text-sm"><b>Görevi: </b> @personel.Departmanlars.DepartmanAd </p>
+                                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
+                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-5 text-center">
+                                        <img src="@personel.PersonelResim" style="width:128px;height:128px;" alt="Personel" class="img-circle img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-right">
+                                    <a href="/Personel/PersonelGetir/@personel.PersonelID" class="btn btn-sm bg-teal">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <a href="/Departmanlar/DepartmanPersonelSatis/@personel.PersonelID" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-user"></i> Satış Geçmişi
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="card-footer">
+            <nav aria-label="Contacts Page Navigation">
+                <ul class="pagination justify-content-center m-0">
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item"><a class="page-link" href="#">6</a></li>
+                    <li class="page-item"><a class="page-link" href="#">7</a></li>
+                    <li class="page-item"><a class="page-link" href="#">8</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+<script src="~/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
