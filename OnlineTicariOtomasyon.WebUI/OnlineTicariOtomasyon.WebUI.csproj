@@ -137,6 +137,7 @@
     <Compile Include="Controllers\SatisHareketController.cs" />
     <Compile Include="Controllers\UrunController.cs" />
     <Compile Include="Controllers\UrunDetayController.cs" />
+    <Compile Include="Controllers\YapilacaklarController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -158,6 +159,7 @@
     <Compile Include="Models\Entities\Urun.cs" />
     <Compile Include="Models\Entities\UrunDetay.cs" />
     <Compile Include="Models\Entities\UrunWithUrunDetay.cs" />
+    <Compile Include="Models\Entities\Yapilacaklar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2656,6 +2658,7 @@
     <Content Include="Views\Istatistik\MarkaUrunSatis.cshtml" />
     <Content Include="Views\Istatistik\SatisHareketleri.cshtml" />
     <Content Include="Views\Personel\PersonelListe.cshtml" />
+    <Content Include="Views\Yapilacaklar\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

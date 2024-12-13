@@ -15,5 +15,6 @@ namespace OnlineTicariOtomasyon.WebUI.Models.Entities
         public DbSet<Cari> Caris { get; set; }
         public DbSet<Gider> Giders { get; set; }
         public DbSet<SatisHareket> SatisHarekets { get; set; }
+        public DbSet<Yapilacaklar> Yapilacaklars { get; set; }
     }
 }
