@@ -1,0 +1,42 @@
+﻿@model Cari
+@{
+    Layout = "~/Views/Shared/_CariPanelLayout.cshtml";
+    ViewData["Title"] = "Profilim";
+}
+@using (Html.BeginForm("Profil", "CariPanel", FormMethod.Post))
+{
+    <div class="form-group">
+        <h5 class="mt-4">Online Ticari Otomasyon Cari Bilgileri</h5>
+        <table class="table table-group-divider">
+            <tr>
+                <th class="text-bg-dark col-md-2 text-md-left">Eposta Adresi:</th>
+                <td>@HttpContext.Current.User.Identity.Name</td>
+            </tr>
+            <tr>
+                <th class="text-bg-dark col-md-1 text-md-left">Adı:</th>
+                <td>
+                    @Html.TextBoxFor(c => c.CariAd, new { @class = "form-control col-md-4", autofocus="" })
+                </td>
+            </tr>
+            <tr>
+                <th class="text-bg-dark col-md-1 text-md-left">Soyadı:</th>
+                <td>
+                    @Html.TextBoxFor(c => c.CariSoyad, new { @class = "form-control col-md-4" })
+                </td>
+            </tr>
+            <tr>
+                <th class="text-bg-dark col-md-1 text-md-left">Şehir:</th>
+                <td>
+                    @Html.TextBoxFor(c => c.CariSehir, new { @class = "form-control col-md-4" })
+                </td>
+            </tr>
+            <tr>
+                <th class="text-bg-dark col-md-1 text-md-left">Şifre:</th>
+                <td>
+                    @Html.TextBoxFor(c => c.CariSifre, new { @class = "form-control col-md-4" })
+                </td>
+            </tr>
+        </table>
+        <button class="btn btn-success col-md-6 ml-2">Güncelle</button>
+    </div>
+}

@@ -1,0 +1,39 @@
+﻿@model List<SatisHareket>
+@{
+    ViewBag.Title = "Siparişlerim";
+    Layout = "~/Views/Shared/_CariPanelLayout.cshtml";
+}
+<div>
+    <h5 class="mt-4">Sipariş Geçmişim</h5>
+    <table class="table table-responsive table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Tarih</th>
+                <th>Ürün</th>
+                <th>Marka</th>
+                <th>Adet</th>
+                <th>Fiyat</th>
+                <th>Ödenen Tutar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ 
+                int i = 1;
+                foreach (SatisHareket siparis in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@siparis.Tarih.ToString("dd-MMMM-yyyy")</td>
+                        <td>@siparis.Urun.UrunAd</td>
+                        <td>@siparis.Urun.Marka</td>
+                        <td>@siparis.Adet</td>
+                        <td>@siparis.Fiyat₺</td>
+                        <td>@(siparis.Adet * siparis.Fiyat)₺</td>
+                    </tr>
+                    i++;
+                }
+            }
+        </tbody>
+    </table>
+</div>
