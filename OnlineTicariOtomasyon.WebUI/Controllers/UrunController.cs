@@ -8,10 +8,14 @@ namespace OnlineTicariOtomasyon.WebUI.Controllers
     public class UrunController : Controller
     {
         Context context = new Context();
-        public ActionResult Index()
+        public ActionResult Index(string urun)
         {
-            List<Urun> uruns = context.Uruns.Where(u => u.Durum == true).ToList();
-            return View(uruns);
+            var urunler = from u in context.Uruns select u;
+            if (!string.IsNullOrEmpty(urun))
+            {
+                urunler = urunler.Where(u => u.UrunAd.Contains(urun) || u.Marka.Contains(urun));
+            }
+            return View(urunler.ToList());
         }
         [HttpGet]
         public ActionResult UrunEkle()
