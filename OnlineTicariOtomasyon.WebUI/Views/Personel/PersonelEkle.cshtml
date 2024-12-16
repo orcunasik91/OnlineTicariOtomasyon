@@ -3,7 +3,7 @@
     ViewBag.Title = "Yeni Personel";
 }
 <h4>Yeni Personel</h4>
-@using (Html.BeginForm("PersonelEkle", "Personel", FormMethod.Post))
+@using (Html.BeginForm("PersonelEkle", "Personel", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div>
         <label for="PersonelAd" class="font-weight-bolder">Adı:</label>
@@ -14,8 +14,9 @@
         @Html.TextBoxFor(model => model.PersonelSoyad, new { @class = "form-control" })
     </div>
     <div>
-        <label for="PersonelResim" class="font-weight-bolder mt-2">Resim:</label>
-        @Html.TextBoxFor(model => model.PersonelResim, new { @class = "form-control" })
+        <label for="PersonelResim" class="font-weight-bolder mt-3">Resim:</label>
+        @*@Html.TextBoxFor(model => model.PersonelResim, new { @class = "form-control" })*@
+        <input type="file" name="PersonelResim" />
     </div>
     <div>
         <label for="Departman" class="font-weight-bolder mt-2">Departman:</label>

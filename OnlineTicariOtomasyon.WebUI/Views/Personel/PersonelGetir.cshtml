@@ -3,7 +3,7 @@
     ViewBag.Title = "Personel Düzenle";
 }
 <h4>Personel Düzenle</h4>
-@using (Html.BeginForm("PersonelDuzenle", "Personel", FormMethod.Post))
+@using (Html.BeginForm("PersonelDuzenle", "Personel", FormMethod.Post, new {enctype= "multipart/form-data" }))
 {
     @Html.HiddenFor(model => model.PersonelID)
     <div>
@@ -15,8 +15,10 @@
         @Html.TextBoxFor(model => model.PersonelSoyad, new { @class = "form-control" })
     </div>
     <div>
-        <label for="PersonelResim" class="font-weight-bolder mt-2">Resim:</label>
-        @Html.TextBoxFor(model => model.PersonelResim, new { @class = "form-control" })
+        <label for="PersonelResim" class="font-weight-bolder mt-2">Mevcut Resim:</label>
+        <img src="@Model.PersonelResim" style="width:64px;height:64px;" alt="Personel" class="img-circle img-fluid mt-2">
+        @*@Html.TextBoxFor(model => model.PersonelResim, new { @class = "form-control" })*@
+        <input type="file" name="PersonelResim" />
     </div>
     <div>
         <label for="Departman" class="font-weight-bolder mt-2">Departman:</label>
