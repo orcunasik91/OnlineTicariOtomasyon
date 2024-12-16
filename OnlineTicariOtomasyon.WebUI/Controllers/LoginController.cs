@@ -43,5 +43,23 @@ namespace OnlineTicariOtomasyon.WebUI.Controllers
             else
                 return RedirectToAction(nameof(Index));
         }
+        [HttpGet]
+        public PartialViewResult AdminGiris()
+        {
+            return PartialView();
+        }
+        [HttpPost]
+        public ActionResult AdminGiris(Admin admin)
+        {
+            Admin adminlBilgi = context.Admins.FirstOrDefault(a => a.KullaniciAd == admin.KullaniciAd && a.Sifre == admin.Sifre);
+            if(adminlBilgi != null)
+            {
+                FormsAuthentication.SetAuthCookie(adminlBilgi.KullaniciAd, false);
+                Session["KullaniciAd"] = adminlBilgi.KullaniciAd.ToString();
+                return RedirectToAction("Index", "Kategori");
+            }
+            else
+                return RedirectToAction(nameof(Index));
+        }
     }
 }

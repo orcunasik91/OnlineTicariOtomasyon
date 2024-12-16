@@ -66,7 +66,7 @@
                     <a class="book popup-with-zoom-anim button-isi zoomIn animated" data-wow-delay=".5s" href="#small-dialog">Müşteri Giriş »</a>
                 </div>
                 <div class="register-in">
-                    <a class="book popup-with-zoom-anim button-isi zoomIn animated" data-wow-delay=".5s" href="#small-dialog1">Personel Girişi »</a>
+                    <a class="book popup-with-zoom-anim button-isi zoomIn animated" data-wow-delay=".5s" href="#small-dialog1">Yönetici Girişi »</a>
                 </div>
                 <div class="clear"> </div>
             </div>
@@ -87,21 +87,7 @@
     <!-- subscribe form popup-->
     <div class="pop-up">
         <div id="small-dialog1" class="mfp-hide book-form">
-
-            <div class="login-form login-form-left">
-                <div class="agile-row">
-                    <h3>Personel Giriş Formu</h3>
-                    <div class="clear"></div>
-                    <div class="login-agileits-top">
-                        <form action="#" method="post">
-                            <input type="text" class="name" name="KullaniciAd" Placeholder="deneme91" required="" />
-                            <input type="password" class="password" name="Sifre" Placeholder="********" required="" />
-                            <input type="submit" value="Oturum Aç">
-                        </form>
-                    </div>
-                </div>
-            </div>
-
+            @Html.Partial("AdminGiris")
         </div>
     </div>
     <!-- //subscribe form popup-->
