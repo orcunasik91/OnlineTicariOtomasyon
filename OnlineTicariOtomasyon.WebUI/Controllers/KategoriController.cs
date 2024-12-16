@@ -1,16 +1,22 @@
 ﻿using OnlineTicariOtomasyon.WebUI.Models.Entities;
-using System.Collections.Generic;
+using PagedList;
 using System.Linq;
 using System.Web.Mvc;
 
 namespace OnlineTicariOtomasyon.WebUI.Controllers
 {
+    [Authorize]
     public class KategoriController : Controller
     {
         Context context = new Context();
-        public ActionResult Index()
+        public ActionResult Index(int? sayfa)
         {
-            List<Kategori> kategoriler = context.Kategoris.ToList();
+            int sayfaNu = sayfa ?? 1;
+            IPagedList<Kategori> kategoriler = context.Kategoris.OrderByDescending(k => k.KategoriID).ToPagedList(sayfaNu,4);
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("~/Views/Kategori/_KategoriListesi.cshtml", kategoriler);
+            }
             return View(kategoriler);
         }
         [HttpGet]

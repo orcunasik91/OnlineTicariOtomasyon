@@ -1,0 +1,27 @@
+﻿@model IPagedList<Kategori>
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<table class="table table-bordered mt-1">
+    <tr>
+        <th>ID</th>
+        <th>Kategori</th>
+        <th colspan="2">İşlemler</th>
+    </tr>
+    @{
+        int i = 1;
+        foreach (Kategori kategori in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@kategori.KategoriAd</td>
+                <td><a href="/Kategori/KategoriSil/@kategori.KategoriID" class="btn btn-danger mt-2">Sil</a></td>
+                <td><a href="/Kategori/KategoriDuzenle/@kategori.KategoriID" class="btn btn-warning mt-2">Düzenle</a></td>
+            </tr>
+            i++;
+        }
+    }
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions { UpdateTargetId = "dvKategoriListesi" }))
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
