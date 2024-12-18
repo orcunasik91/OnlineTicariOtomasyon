@@ -1,0 +1,26 @@
+﻿@model List<KargoTakip>
+@{
+    ViewBag.Title = "KargoTakip";
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Takip Kodu</th>
+        <th>Açıklama</th>
+        <th>İşlem Tarihi</th>
+    </tr>
+    @{
+        int i = 1;
+        foreach (KargoTakip kargo in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@kargo.TakipKodu</td>
+                <td>@kargo.Aciklama</td>
+                <td>@kargo.TarihZaman.ToString("G")</td>
+            </tr>
+            i++;
+        }
+    }
+</table>

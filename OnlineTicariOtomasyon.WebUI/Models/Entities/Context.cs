@@ -16,5 +16,7 @@ namespace OnlineTicariOtomasyon.WebUI.Models.Entities
         public DbSet<Gider> Giders { get; set; }
         public DbSet<SatisHareket> SatisHarekets { get; set; }
         public DbSet<Yapilacaklar> Yapilacaklars { get; set; }
+        public DbSet<KargoTakip> KargoTakips { get; set; }
+        public DbSet<KargoDetay> KargoDetays { get; set; }
     }
 }

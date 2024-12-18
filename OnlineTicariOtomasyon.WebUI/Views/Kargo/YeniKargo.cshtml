@@ -1,0 +1,27 @@
+﻿@model KargoDetay
+@{
+    ViewBag.Title = "Yeni Kargo";
+}
+<h5>Yeni Kargo Bilgileri</h5>
+<div class="row ml-2">
+    <form method="post" class="form-group">
+        @Html.HiddenFor(model => model.Tarih)
+        <div class="form-group">
+            <label for="TakipKodu" class="mb-1 font-weight-bold">Takip Kodu:</label>
+            <input type="text" name="TakipKodu" class="form-control" value="@ViewBag.TakipKodu" readonly />
+        </div>
+        <div class="form-group">
+            <label for="Alici" class="mb-1 font-weight-bold">Alıcı:</label>
+            @Html.TextBoxFor(model => model.Alici, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label for="Personel" class="mb-1 font-weight-bold">Personel:</label>
+            @Html.TextBoxFor(model => model.Personel, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label for="Aciklama" class="mb-1 font-weight-bold">Açıklama:</label>
+            @Html.TextAreaFor(model => model.Aciklama, new { @class = "form-control" , style="width:500px;height:200px;" })
+        </div>
+        <button class="btn btn-outline-success">Kaydet</button>
+    </form>
+</div>
