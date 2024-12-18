@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "QR Code";
+}
+
+<div>
+    @using (Html.BeginForm("Index", "QRCode", FormMethod.Post))
+    {
+        <input type="text" name="kod" />
+        <input type="submit" class="btn btn-info" value="QR Oluştur" />
+    }
+    @if (ViewBag.KarekodImage != null)
+    {
+        <img src="@ViewBag.KarekodImage" alt="" style="width:400px; height:400px;" />
+    }
+</div>
