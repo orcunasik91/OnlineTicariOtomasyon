@@ -24,6 +24,7 @@
             <th>Satış Fiyatı</th>
             <th>Sil</th>
             <th>Düzenle</th>
+            <th>Satış Yap</th>
         </tr>
         @{
             int i = 1;
@@ -37,8 +38,9 @@
                     <td>@urun.Stok</td>
                     <td>@urun.AlisFiyati</td>
                     <td>@urun.SatisFiyati</td>
-                    <td><a href="/Urun/UrunSil/@urun.UrunID" class="btn btn-danger mt-2">Sil</a></td>
-                    <td><a href="/Urun/UrunGetir/@urun.UrunID" class="btn btn-warning mt-2">Düzenle</a></td>
+                    <td><a href="/Urun/UrunSil/@urun.UrunID" class="btn btn-danger">Sil</a></td>
+                    <td><a href="/Urun/UrunGetir/@urun.UrunID" class="btn btn-warning">Düzenle</a></td>
+                    <td><a href="/Urun/SatisYap/@urun.UrunID" class="btn btn-success">Sat</a></td>
                 </tr>
                 i++;
             }

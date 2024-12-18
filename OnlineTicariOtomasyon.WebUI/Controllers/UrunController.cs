@@ -1,4 +1,5 @@
 ﻿using OnlineTicariOtomasyon.WebUI.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -76,6 +77,31 @@ namespace OnlineTicariOtomasyon.WebUI.Controllers
             context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+        [HttpGet]
+        public ActionResult SatisYap(int id)
+        {
+            List<SelectListItem> personel = (from p in context.Personels.ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = p.PersonelAd + " " + p.PersonelSoyad,
+                                                 Value = p.PersonelID.ToString()
+                                             }).ToList();
+            ViewBag.Personel = personel;
 
+            Urun urun = context.Uruns.Find(id);
+            ViewBag.UrunID = urun.UrunID;
+            ViewBag.Fiyat = urun.SatisFiyati;
+            List<Cari> cariler = context.Caris.ToList();
+            ViewBag.CariListe = cariler;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SatisYap(SatisHareket satis)
+        {
+            satis.Tarih = DateTime.Parse(DateTime.Now.ToString("dd-MMMM-yyyy"));
+            context.SatisHarekets.Add(satis);
+            context.SaveChanges();
+            return RedirectToAction("Index","SatisHareket");
+        }
     }
 }

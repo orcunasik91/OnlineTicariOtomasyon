@@ -1,0 +1,89 @@
+﻿@model SatisHareket
+@{
+    ViewData["Title"] = "Satış Yap";
+}
+<h5>Yeni Satış</h5>
+<div class="row mt-2">
+    <div class="col-md-6">
+        <form method="post" class="horizontal" action="/Urun/SatisYap/">
+            <div class="form-group">
+                <label class="col-md-2 control-label">Ürün:</label>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" name="UrunID" value="@ViewBag.UrunID" readonly />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="CariID" class="col-md-2 control-label">MüşteriID:</label>
+                <div>
+                    <p class="col-md-12">
+                        @Html.TextBoxFor(model => model.CariID, new {@class = "form-control-sm" ,autofocus = "" })
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#CariListe">Müşteri Listesi</button>
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="PersonelAd" class="col-md-4 control-label">Satış Personeli:</label>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => model.PersonelID, (List<SelectListItem>)ViewBag.Personel, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Adet" class="col-md-2 control-label">Adet:</label>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" name="Adet" id="Adet" onchange="total();" onkeyup="total();" value="1" min="1" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Fiyat:</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="Fiyat" id="Fiyat" onkeyup="total();" onchange="total();" value="@ViewBag.Fiyat" readonly />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Toplam Tutar:</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="ToplamTutar" id="ToplamTutar" readonly/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" class="btn btn-success" value="Satış Yap" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal" id="CariListe">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Müşterilerimiz</h2>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover">
+                    <tr>
+                        <th>CariID</th>
+                        <th>Cari</th>
+                    </tr>
+                    @foreach (var item in ViewBag.CariListe)
+                    {
+                        <tr>
+                            <td>@item.CariID</td>
+                            <td>@item.CariAd @item.CariSoyad</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function total() {
+        let adet = document.getElementById('Adet').value;
+        let fiyat = document.getElementById('Fiyat').value;
+        let sonuc = parseInt(adet) * parseFloat(fiyat);
+        if (!isNaN(sonuc)) {
+            document.getElementById('ToplamTutar').value = sonuc;
+        }
+    };
+</script>

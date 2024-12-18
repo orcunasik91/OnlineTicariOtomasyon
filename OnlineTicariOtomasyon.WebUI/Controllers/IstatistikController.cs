@@ -72,11 +72,12 @@ namespace OnlineTicariOtomasyon.WebUI.Controllers
             ViewBag.KasaToplam = kasaToplam;
             #endregion
             #region GunlukSatis
-            int gunlukSatis = context.SatisHarekets.Count(sh => sh.Tarih == DateTime.Now);
+            DateTime tarih = DateTime.Parse(DateTime.Now.ToString("dd-MMMM-yyyy"));
+            int gunlukSatis = context.SatisHarekets.Count(sh => sh.Tarih == tarih);
             ViewBag.GunlukSatis = gunlukSatis;
             #endregion
             #region GunlukKasa
-            decimal gunlukKasa = context.SatisHarekets.Where(sh => sh.Tarih == DateTime.Now).Sum(sh => (decimal?)sh.ToplamTutar) ?? 0;
+            decimal gunlukKasa = context.SatisHarekets.Where(sh => sh.Tarih == tarih).Sum(sh => (decimal?)sh.ToplamTutar) ?? 0;
             ViewBag.GunlukKasa = gunlukKasa;
             #endregion
             return View();
