@@ -140,6 +140,7 @@
     <Compile Include="Controllers\CariPanelController.cs" />
     <Compile Include="Controllers\DepartmanlarController.cs" />
     <Compile Include="Controllers\FaturaController.cs" />
+    <Compile Include="Controllers\GrafikController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IstatistikController.cs" />
     <Compile Include="Controllers\KargoController.cs" />
@@ -175,6 +176,7 @@
     <Compile Include="Models\Entities\UrunDetay.cs" />
     <Compile Include="Models\Entities\UrunWithUrunDetay.cs" />
     <Compile Include="Models\Entities\Yapilacaklar.cs" />
+    <Compile Include="Models\UrunListesi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2737,10 +2739,12 @@
     <Content Include="Views\Kargo\YeniKargo.cshtml" />
     <Content Include="Views\Kargo\KargoTakip.cshtml" />
     <Content Include="Views\QRCode\Index.cshtml" />
+    <Content Include="Views\Grafik\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
+    <Folder Include="image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
