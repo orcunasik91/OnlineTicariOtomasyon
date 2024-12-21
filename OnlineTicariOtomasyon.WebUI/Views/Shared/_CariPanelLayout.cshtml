@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>@ViewData["Title"] - Cari Panel</title>
+     @RenderSection("Styles",false)
     <!-- Bootstrap core CSS -->
     <link href="~/webpanel/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -24,7 +25,7 @@
                 <a href="/CariPanel/Index/" class="list-group-item list-group-item-action bg-light"><i class="fas fa-user-alt"></i> &nbsp;Profilim</a>
                 <a href="/CariPanel/Siparislerim/" class="list-group-item list-group-item-action bg-light"><i class="fas fa-gifts"></i> Siparişlerim</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-plane-arrival"></i> Kargo Takibi</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-mail-bulk"></i> Mesajlar</a>
+                <a href="/CariPanel/Mesajlar/" class="list-group-item list-group-item-action bg-light"><i class="fas fa-mail-bulk"></i> Mesajlar</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-power-off"></i> Çıkış Yap</a>
             </div>
         </div>
@@ -69,9 +70,12 @@
     <script src="~/webpanel/vendor/jquery/jquery.min.js"></script>
     <script src="~/webpanel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Menu Toggle Script -->
-    <script>$("#menu-toggle").click(function(e) {
+    <script>
+        $("#menu-toggle").click(function (e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
-    });</script>
+        });
+    </script>
+    @RenderSection("Scripts",false)
 </body>
 </html>

@@ -1,0 +1,121 @@
+﻿@model Mesajlar
+@{
+    ViewBag.Title = "Yeni Mesaj";
+    Layout = "~/Views/Shared/_CariPanelLayout.cshtml";
+}
+@section Styles{
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.css">
+}
+
+<div class="row mb-2">
+    <div class="col-sm-6">
+        <h4 class="mt-2">Mesajlar</h4>
+    </div>
+    <div class="col-sm-6 mt-2">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/CariPanel/Index/">Profilim</a></li>
+            <li class="breadcrumb-item active">Yeni Mesaj</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <a href="/CariPanel/YeniMesaj/" class="btn btn-primary btn-block mb-3">Yeni Mesaj</a>
+        <div class="card">
+            <div class="card-body p-0">
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item active">
+                        <a href="/CariPanel/Mesajlar/" class="nav-link">
+                            <i class="fas fa-inbox"></i> Gelen Kutusu
+                            <span class="badge bg-primary float-right">@ViewBag.GelenMesajSayisi</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/CariPanel/GonderilenMesajlar/" class="nav-link">
+                            <i class="far fa-envelope"></i> Giden Kutusu
+                            <span class="badge bg-success float-right">@ViewBag.GidenMesajSayisi</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="far fa-file-alt"></i> Taslaklar
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="card card-primary card-outline">
+            <div class="card-header">
+                <h3 class="card-title">Yeni Mesaj</h3>
+            </div>
+            <div class="card-body">
+                <form class="form-group" method="post">
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Kime:" name="Alici">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Konu:" name="Konu">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="compose-textarea" name="Icerik" class="form-control" style="height: 500px">
+                           
+                        </textarea>
+                    </div>
+                    <div class="card-footer">
+                        <div class="float-right">
+                            <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Gönder</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
+    <script>
+        $(function () {
+            $('.checkbox-toggle').click(function () {
+                var clicks = $(this).data('clicks')
+                if (clicks) {
+                    $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
+                    $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
+                }
+                else {
+                    $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
+                    $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
+                }
+                $(this).data('clicks', !clicks)
+            });
+
+            $('.mailbox-star').click(function (e) {
+                e.preventDefault()
+                var $this = $(this).find('a > i')
+                var glyph = $this.hasClass('glyphicon')
+                var fa = $this.hasClass('fa')
+
+                if (glyph) {
+                    $this.toggleClass('glyphicon-star')
+                    $this.toggleClass('glyphicon-star-empty')
+                }
+
+                if (fa) {
+                    $this.toggleClass('fa-star')
+                    $this.toggleClass('fa-star-o')
+                }
+            });
+
+        });
+        $(function () {
+            $('#compose-textarea').summernote()
+        });
+    </script>
+    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.min.js"></script>
+}

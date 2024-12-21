@@ -1,0 +1,136 @@
+﻿@model List<Mesajlar>
+@{
+    ViewBag.Title = "Giden Kutusu";
+    Layout = "~/Views/Shared/_CariPanelLayout.cshtml";
+}
+@section Styles{
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css" rel="stylesheet" />
+}
+
+<div class="row mb-2">
+    <div class="col-sm-6">
+        <h4 class="mt-2">Mesajlar</h4>
+    </div>
+    <div class="col-sm-6 mt-2">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/CariPanel/Index/">Profilim</a></li>
+            <li class="breadcrumb-item active">Mesajlar</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <a href="/CariPanel/YeniMesaj/" class="btn btn-primary btn-block mb-3">Yeni Mesaj</a>
+        <div class="card">
+            <div class="card-body p-0">
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item active">
+                        <a href="/CariPanel/Mesajlar/" class="nav-link">
+                            <i class="fas fa-inbox"></i> Gelen Kutusu
+                            <span class="badge bg-primary float-right">@ViewBag.GelenMesajSayisi</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/CariPanel/GonderilenMesajlar/" class="nav-link">
+                            <i class="far fa-envelope"></i> Giden Kutusu
+                            <span class="badge bg-success float-right">@ViewBag.GidenMesajSayisi</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="far fa-file-alt"></i> Taslaklar
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="card card-primary card-outline">
+            <div class="card-header">
+                <h3 class="card-title">Giden Mesaj</h3>
+                <div class="card-tools">
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" placeholder="Arama Yap">
+                        <div class="input-group-append">
+                            <div class="btn btn-primary">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive mailbox-messages">
+                    <table class="table table-hover table-striped">
+                        <tbody>
+                            @{
+                                int i = 1;
+                                foreach (Mesajlar mesaj in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="icheck-primary">
+                                                <input type="checkbox" value="" id="check+@i">
+                                                <label for="check+@i"></label>
+                                            </div>
+                                        </td>
+                                        <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
+                                        <td class="mailbox-name">@mesaj.Alici</td>
+                                        <td class="mailbox-subject">
+                                            <a href="/CariPanel/MesajDetay/@mesaj.MesajID"><b>@mesaj.Konu</b></a> - @mesaj.Icerik.Substring(0, 10)...
+                                        </td>
+                                        <td class="mailbox-attachment"></td>
+                                        <td class="mailbox-date">@mesaj.Tarih.ToString("G")</td>
+                                    </tr>
+                                    i++;
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
+    <script>
+        $(function () {
+            $('.checkbox-toggle').click(function () {
+                var clicks = $(this).data('clicks')
+                if (clicks) {
+                    $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
+                    $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
+                }
+                else {
+                    $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
+                    $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
+                }
+                $(this).data('clicks', !clicks)
+            });
+
+            $('.mailbox-star').click(function (e) {
+                e.preventDefault()
+                var $this = $(this).find('a > i')
+                var glyph = $this.hasClass('glyphicon')
+                var fa = $this.hasClass('fa')
+
+                if (glyph) {
+                    $this.toggleClass('glyphicon-star')
+                    $this.toggleClass('glyphicon-star-empty')
+                }
+
+                if (fa) {
+                    $this.toggleClass('fa-star')
+                    $this.toggleClass('fa-star-o')
+                }
+            });
+
+        });
+    </script>
+    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
+}
