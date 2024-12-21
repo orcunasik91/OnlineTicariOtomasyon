@@ -1,0 +1,39 @@
+﻿@model List<KargoDetay>
+@{
+    ViewBag.Title = "Kargo Takip";
+    Layout = "~/Views/Shared/_CariPanelLayout.cshtml";
+}
+@using (Html.BeginForm("KargoTakip", "CariPanel", FormMethod.Get))
+{
+    <div class="mt-2">
+        <p class="mt-2 font-weight-bold">
+            Kargo Takip Kodu: @Html.TextBox("kargo")
+            <input type="submit" value="Ara" class="col-sm-2" />
+        </p>
+    </div>
+}
+<table class="table table-bordered mt-1">
+    <tr>
+        <th>#</th>
+        <th>Takip Kodu</th>
+        <th>Personel</th>
+        <th>Alıcı</th>
+        <th>Tarih</th>
+        <th>Düzenle</th>
+    </tr>
+    @{
+        int i = 1;
+        foreach (KargoDetay kargo in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@kargo.TakipKodu</td>
+                <td>@kargo.Personel</td>
+                <td>@kargo.Alici</td>
+                <td>@kargo.Tarih.ToString("G")</td>
+                <td><a href="/CariPanel/KargoDetay/@kargo.TakipKodu" class="btn btn-warning mt-2">Kargo Takip</a></td>
+            </tr>
+            i++;
+        }
+    }
+</table>

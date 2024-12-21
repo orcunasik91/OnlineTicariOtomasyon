@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace OnlineTicariOtomasyon.WebUI.Controllers
 {
@@ -63,7 +64,30 @@ namespace OnlineTicariOtomasyon.WebUI.Controllers
             Mesajlar mesaj = context.Mesajlars.Find(id);
             return View(mesaj);
         }
-
+        [HttpGet]
+        public ActionResult KargoTakip(string kargo)
+        {
+            string cariEposta = (string)Session["CariEmail"];
+            var kargolar = from k in context.KargoDetays select k;
+            if (!string.IsNullOrEmpty(kargo))
+            {
+                kargolar = kargolar.Where(k => k.TakipKodu.Contains(kargo));
+            }
+            return View(kargolar.ToList());
+        }
+        [HttpGet]
+        public ActionResult KargoDetay(string id)
+        {
+            string cariEposta = (string)Session["CariEmail"];
+            List<KargoTakip> kargoDetay = context.KargoTakips.Where(k => k.TakipKodu == id).ToList();
+            return View(kargoDetay);
+        }
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Index", "Login");
+        }
         private void GelenGidenMesajSayisi()
         {
             string cariEposta = (string)Session["CariEmail"];
